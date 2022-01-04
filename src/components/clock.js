@@ -1,15 +1,24 @@
 import React, {useEffect, useRef} from 'react';
 import './clock.css';
+import Background from './agf-logo.svg';
 
-export const Clock = () => {
+export const Clock = (props) => {
+  const clockElement = useRef(undefined);
+  const secondHand = useRef(undefined); 
+  const minuteHand = useRef(undefined); 
+  const hourHand = useRef(undefined);
+
+  useEffect(() => {
+    if (!props.clockBackgroundImage) {
+      return;
+    }
+
+    clockElement.current.style.setProperty('--clockBackgroundImage', `url(${props.clockBackgroundImage})`);
+  }, [props.clockBackgroundImage])
 
   useEffect(() => {
     setInterval(setClock, 1000);
   }, []);
-
-  const secondHand = useRef(undefined); 
-  const minuteHand = useRef(undefined); 
-  const hourHand = useRef(undefined);
 
   function setClock() {
     const currentDate = new Date();
@@ -35,7 +44,7 @@ export const Clock = () => {
 
   setClock();
 
-  return (<div class='clock'>
+  return (<div ref={clockElement} class='clock'>
     <div class="number number1">1</div>
     <div class="number number2">2</div>
     <div class="number number3">3</div>
