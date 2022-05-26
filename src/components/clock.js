@@ -6,18 +6,18 @@ export const Clock = (props) => {
   const secondHand = useRef(undefined); 
   const minuteHand = useRef(undefined); 
   const hourHand = useRef(undefined);
-  const {clockBackgroundImage, ...styles} = props;
+  let {clockBackgroundImage} = props;
+  const styles = {
+    ...props.styles,  
+    width: props.size ?? '200px',
+    height: props.size ?? '200px'
+  }
 
   useEffect(() => {
     if (props.clockBackgroundImage) {
       clockElement.current.style.setProperty('--clockBackgroundImage', `url(${clockBackgroundImage})`);
     }
-    if (props.width) {
-      clockElement.current.style.setProperty('--width', props.width);
-    }
-    if (props.height) {
-      clockElement.current.style.setProperty('--height', props.height);
-    }
+    
   }, [props.clockBackgroundImage])
 
   const setClock = useCallback(() => {

@@ -6,9 +6,8 @@ function App() {
   return (
     <div className="App">
         <div className="App-clock">
-            <Clock
-                width={'500px'}    
-                height={'500px'}    
+            <Clock                
+                size={'500px'}     
                 clockBackgroundImage={Logo} />   
 
         </div>
