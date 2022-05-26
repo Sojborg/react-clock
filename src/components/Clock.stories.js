@@ -10,6 +10,9 @@ export default {
 const Template = (args) => <Clock {...args} />;
 
 export const Default = Template.bind({});
+
 Default.args = {
-    clockBackgroundImage: Logo
+    clockBackgroundImage: Logo,
+    width: '500px',
+    height: '500px'
 }

@@ -5,7 +5,13 @@ import Logo from './kolt_hasselager_logo.gif';
 function App() {
   return (
     <div className="App">
-      <Clock clockBackgroundImage={Logo} />
+        <div className="App-clock">
+            <Clock
+                width={'500px'}    
+                height={'500px'}    
+                clockBackgroundImage={Logo} />   
+
+        </div>
     </div>
   );
 }
